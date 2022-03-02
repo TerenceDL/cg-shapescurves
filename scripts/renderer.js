@@ -46,22 +46,25 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide0(ctx) {
-        
+        this.drawRectangle({x:100, y:100}, {x:400, y:200}, [0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
-
+        this.drawCircle({x:200, y:300},100, [0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide2(ctx) {
-
+        this.drawBezierCurve({x:100,y:100},{x:180,y:160},{x:250,y:75},{x:300,y:145},[0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide3(ctx) {
-
+        this.drawRectangle({x:50, y:400}, {x:200, y:400}, [0,0,0,255],ctx);
+        this.drawRectangle({x:125, y:200}, {x:125, y:400}, [0,0,0,255],ctx);
+        //e
+        this.drawBezierCurve({x:100,y:200},{x:150,y:200},{x:150,y:75},{x:400,y:145},[0,0,0,255],ctx)
     }
 
     // left_bottom:  object ({x: __, y: __})
@@ -69,7 +72,19 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawRectangle(left_bottom, right_top, color, ctx) {
-        
+        let right_bottom= {x:right_top.x,y:left_bottom.y};
+        let left_top = {x:left_bottom.x,y:right_top.y};
+        this.drawLine(right_top, left_top, color, ctx);
+        this.drawLine(left_bottom, right_bottom, color, ctx);
+        this.drawLine(right_bottom, right_top, color, ctx);
+        this.drawLine(left_bottom, left_top, color, ctx);
+       if(this.show_points){
+
+           this.drawPoints(right_bottom,[255,0,0,255],ctx);
+           this.drawPoints(left_bottom,[255,0,0,255],ctx);
+           this.drawPoints(left_top,[255,0,0,255],ctx);
+           this.drawPoints(right_top,[255,0,0,255],ctx);
+       }
     }
 
     // center:       object ({x: __, y: __})
@@ -77,7 +92,41 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawCircle(center, radius, color, ctx) {
-        
+
+        let theta = 0.0;
+        let point_start = {x:center.x+radius,y:center.y};
+        let newPoint = {x:0,y:0};
+        console.log(point_start);
+
+        if(this.num_curve_sections>2){
+
+           theta = Math.PI*2/this.num_curve_sections;
+           let thetaInt = theta;
+
+            for(let i = 0; i<this.num_curve_sections;++i){
+                //console.log(theta);
+                newPoint.x= center.x+radius*Math.cos(theta);
+                newPoint.y= center.y+radius*Math.sin(theta);
+                theta = theta+thetaInt;
+                this.drawLine(point_start,newPoint,color,ctx);
+                console.log("start",point_start);
+                console.log("new point",newPoint);
+                point_start = {x:newPoint.x,y:newPoint.y};
+                if(this.show_points){
+
+                    this.drawPoints(point_start,[255,0,0,255],ctx);
+                
+                    this.drawPoints(newPoint,[255,0,0,255],ctx);
+                   
+                }
+
+                
+
+
+            }
+        }
+
+
     }
 
     // pt0:          object ({x: __, y: __})
@@ -87,7 +136,29 @@ class Renderer {
     // color:        array of int [R, G, B, A]
     // ctx:          canvas context
     drawBezierCurve(pt0, pt1, pt2, pt3, color, ctx) {
+        let start_point={x:pt0.x,y:pt0.y};
+        let end_point={x:0,y:0};
+        let t =0.0;
+        let t_int = 1/this.num_curve_sections;
+
+            for(let i=0;i<=this.num_curve_sections; ++i)
+            {
+                    end_point.x = Math.pow((1-t),3)*pt0.x+3*Math.pow((1-t),2)*t*pt1.x+3*(1-t)*Math.pow(t,2)*pt2.x+Math.pow(t,3)*pt3.x;
+                    end_point.y = Math.pow((1-t),3)*pt0.y+3*Math.pow((1-t),2)*t*pt1.y+3*(1-t)*Math.pow(t,2)*pt2.y+Math.pow(t,3)*pt3.y;
+                    this.drawLine(start_point,end_point,color,ctx);
+                    start_point = {x:end_point.x,y:end_point.y};
+                t = t+t_int;
         
+                if(this.show_points){
+
+                    this.drawPoints(start_point,[255,0,0,255],ctx);
+                    this.drawPoints(end_point,[255,0,0,255],ctx);
+                    
+                }
+            }
+        
+       
+
     }
 
     // pt0:          object ({x: __, y: __})
@@ -101,5 +172,8 @@ class Renderer {
         ctx.moveTo(pt0.x, pt0.y);
         ctx.lineTo(pt1.x, pt1.y);
         ctx.stroke();
+    }
+    drawPoints(pt0,color,ctx){
+        this.drawLine({x:pt0.x-1,y:pt0.y+1},{x:pt0.x+1,y:pt0.y+1},color,ctx);
     }
 };
