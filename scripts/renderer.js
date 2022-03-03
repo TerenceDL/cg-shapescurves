@@ -46,17 +46,17 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide0(ctx) {
-        this.drawRectangle({x:100, y:100}, {x:700, y:400}, [0,0,0,255],ctx);
+        this.drawRectangle({x:100, y:100}, {x:700, y:400}, [255,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
-        this.drawCircle({x:400, y:300},100, [0,0,0,255],ctx);
+        this.drawCircle({x:400, y:300},100, [192,192,192,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide2(ctx) {
-        this.drawBezierCurve({x:100,y:150},{x:350,y:250},{x:500,y:50},{x:650,y:150},[0,0,0,255],ctx);
+        this.drawBezierCurve({x:100,y:150},{x:350,y:250},{x:500,y:50},{x:650,y:150},[255,215,0,255],ctx);
     }
 
     // ctx:          canvas context
@@ -130,14 +130,13 @@ class Renderer {
            let thetaInt = theta;
 
             for(let i = 0; i<this.num_curve_sections;++i){
-                //console.log(theta);
+
                 newPoint.x= center.x+radius*Math.cos(theta);
                 newPoint.y= center.y+radius*Math.sin(theta);
                 theta = theta+thetaInt;
                 this.drawLine(point_start,newPoint,color,ctx);
-                console.log("start",point_start);
-                console.log("new point",newPoint);
                 point_start = {x:newPoint.x,y:newPoint.y};
+                
                 if(this.show_points){
 
                     this.drawPoints(point_start,[255,0,0,255],ctx);
