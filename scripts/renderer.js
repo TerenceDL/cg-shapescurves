@@ -61,13 +61,29 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide3(ctx) {
-        this.drawRectangle({x:50, y:400}, {x:200, y:400}, [0,0,0,255],ctx);
-        this.drawRectangle({x:125, y:200}, {x:125, y:400}, [0,0,0,255],ctx);
+        //T
+        this.drawLine({x:100,y:170},{x:100,y:400},[255,0,0,255],ctx);
+        this.drawLine({x:25,y:400},{x:175,y:400},[255,0,0,255],ctx);
         //e
-        this.drawBezierCurve({x:150,y:250},{x:150,y:325},{x:250,y:325},{x:250,y:250},[0,0,0,255],ctx);
-        this.drawLine({x:150,y:250},{x:250,y:250},[255,0,0,255],ctx);
-        this.drawBezierCurve({x:260,y:175},{x:100,y:150},{x:145,y:200},{x:150,y:250},[0,0,0,255],ctx);
+        this.drawBezierCurve({x:120,y:250},{x:120,y:300},{x:180,y:300},{x:180,y:250},[0,0,0,255],ctx);
+        this.drawLine({x:120,y:250},{x:180,y:250},[255,0,0,255],ctx);
+        this.drawBezierCurve({x:180,y:175},{x:120,y:150},{x:115,y:200},{x:120,y:250},[0,0,0,255],ctx);
+        //r
+       this.drawBezierCurve({x:210,y:280},{x:270,y:320},{x:280,y:280},{x:280,y:290},[0,255,0,255],ctx);
+       //this.drawBezierCurve({x:270,y:280},{x:270,y:355},{x:380,y:355},{x:380,y:280},[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:300},10,[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:280},10,[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:260},10,[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:240},10,[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:220},10,[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:200},10,[0,255,0,255],ctx);
+       this.drawCircle({x:200,y:180},10,[0,255,0,255],ctx);
+       //e
+       this.drawBezierCurve({x:280,y:250},{x:280,y:300},{x:340,y:300},{x:340,y:250},[0,0,0,255],ctx);
+       this.drawLine({x:280,y:250},{x:340,y:250},[255,0,0,255],ctx);
+       this.drawBezierCurve({x:340,y:175},{x:280,y:150},{x:275,y:200},{x:280,y:250},[0,0,0,255],ctx);
     }
+
 
     // left_bottom:  object ({x: __, y: __})
     // right_top:    object ({x: __, y: __})
