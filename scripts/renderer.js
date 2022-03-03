@@ -56,7 +56,7 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide2(ctx) {
-        this.drawBezierCurve({x:100,y:100},{x:180,y:160},{x:250,y:75},{x:300,y:145},[0,0,0,255],ctx);
+        this.drawBezierCurve({x:100,y:100},{x:50,y:150},{x:50,y:200},{x:50,y:200},[0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
@@ -64,7 +64,9 @@ class Renderer {
         this.drawRectangle({x:50, y:400}, {x:200, y:400}, [0,0,0,255],ctx);
         this.drawRectangle({x:125, y:200}, {x:125, y:400}, [0,0,0,255],ctx);
         //e
-        this.drawBezierCurve({x:100,y:200},{x:150,y:200},{x:150,y:75},{x:400,y:145},[0,0,0,255],ctx)
+        this.drawBezierCurve({x:150,y:250},{x:150,y:325},{x:250,y:325},{x:250,y:250},[0,0,0,255],ctx);
+        this.drawLine({x:150,y:250},{x:250,y:250},[255,0,0,255],ctx);
+        this.drawBezierCurve({x:260,y:175},{x:100,y:150},{x:145,y:200},{x:150,y:250},[0,0,0,255],ctx);
     }
 
     // left_bottom:  object ({x: __, y: __})
@@ -153,9 +155,11 @@ class Renderer {
 
                     this.drawPoints(start_point,[255,0,0,255],ctx);
                     this.drawPoints(end_point,[255,0,0,255],ctx);
-                    
+                    this.drawPoints(pt1,[255,0,0,255],ctx);
+                    this.drawPoints(pt2,[0,255,0,255],ctx);
                 }
             }
+        
         
        
 
