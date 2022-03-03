@@ -46,42 +46,50 @@ class Renderer {
 
     // ctx:          canvas context
     drawSlide0(ctx) {
-        this.drawRectangle({x:100, y:100}, {x:400, y:200}, [0,0,0,255],ctx);
+        this.drawRectangle({x:100, y:100}, {x:700, y:400}, [0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide1(ctx) {
-        this.drawCircle({x:200, y:300},100, [0,0,0,255],ctx);
+        this.drawCircle({x:400, y:300},100, [0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide2(ctx) {
-        this.drawBezierCurve({x:100,y:100},{x:50,y:150},{x:50,y:200},{x:50,y:200},[0,0,0,255],ctx);
+        this.drawBezierCurve({x:100,y:150},{x:350,y:250},{x:500,y:50},{x:650,y:150},[0,0,0,255],ctx);
     }
 
     // ctx:          canvas context
     drawSlide3(ctx) {
         //T
-        this.drawLine({x:100,y:170},{x:100,y:400},[255,0,0,255],ctx);
-        this.drawLine({x:25,y:400},{x:175,y:400},[255,0,0,255],ctx);
+        this.drawLine({x:100,y:170},{x:100,y:400},[148,0,211,255],ctx);
+        this.drawLine({x:25,y:400},{x:175,y:400},[148,0,211,255],ctx);
         //e
-        this.drawBezierCurve({x:120,y:250},{x:120,y:300},{x:180,y:300},{x:180,y:250},[0,0,0,255],ctx);
-        this.drawLine({x:120,y:250},{x:180,y:250},[255,0,0,255],ctx);
-        this.drawBezierCurve({x:180,y:175},{x:120,y:150},{x:115,y:200},{x:120,y:250},[0,0,0,255],ctx);
+        this.drawBezierCurve({x:120,y:250},{x:120,y:300},{x:180,y:300},{x:180,y:250},[75,0,130,255],ctx);
+        this.drawLine({x:120,y:250},{x:180,y:250},[75,0,130,255],ctx);
+        this.drawBezierCurve({x:180,y:175},{x:120,y:150},{x:115,y:200},{x:120,y:250},[75,0,130,255],ctx);
         //r
-       this.drawBezierCurve({x:210,y:280},{x:270,y:320},{x:280,y:280},{x:280,y:290},[0,255,0,255],ctx);
-       //this.drawBezierCurve({x:270,y:280},{x:270,y:355},{x:380,y:355},{x:380,y:280},[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:300},10,[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:280},10,[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:260},10,[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:240},10,[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:220},10,[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:200},10,[0,255,0,255],ctx);
-       this.drawCircle({x:200,y:180},10,[0,255,0,255],ctx);
+       this.drawBezierCurve({x:210,y:280},{x:270,y:320},{x:280,y:280},{x:280,y:290},[0,0,255,255],ctx);
+       this.drawCircle({x:200,y:280},10,[0,0,255,255],ctx);
+       this.drawCircle({x:200,y:260},10,[0,0,255,255],ctx);
+       this.drawCircle({x:200,y:240},10,[0,0,255,255],ctx);
+       this.drawCircle({x:200,y:220},10,[0,0,255,255],ctx);
+       this.drawCircle({x:200,y:200},10,[0,0,255,255],ctx);
+       this.drawCircle({x:200,y:180},10,[0,0,255,255],ctx);
        //e
-       this.drawBezierCurve({x:280,y:250},{x:280,y:300},{x:340,y:300},{x:340,y:250},[0,0,0,255],ctx);
-       this.drawLine({x:280,y:250},{x:340,y:250},[255,0,0,255],ctx);
-       this.drawBezierCurve({x:340,y:175},{x:280,y:150},{x:275,y:200},{x:280,y:250},[0,0,0,255],ctx);
+       this.drawBezierCurve({x:280,y:250},{x:280,y:300},{x:340,y:300},{x:340,y:250},[0,255,0,255],ctx);
+       this.drawLine({x:280,y:250},{x:340,y:250},[0,255,0,255],ctx);
+       this.drawBezierCurve({x:340,y:175},{x:280,y:150},{x:275,y:200},{x:280,y:250},[0,255,0,255],ctx);
+       //n
+       this.drawRectangle({x:360,y:170},{x:370,y:300},[255,255,0,255],ctx);
+       this.drawBezierCurve({x:370,y:250},{x:370,y:300},{x:440,y:300},{x:440,y:250},[255,255,0,255],ctx);
+       this.drawLine({x:440,y:250},{x:440,y:170},[255,255,0,255],ctx);
+       //c
+       this.drawBezierCurve({x:500,y:170},{x:440,y:170},{x:440,y:280},{x:500,y:280},[255,127,0,255],ctx);
+       //e
+       this.drawBezierCurve({x:520,y:250},{x:520,y:300},{x:580,y:300},{x:580,y:250},[255,0,0,255],ctx);
+       this.drawLine({x:520,y:250},{x:580,y:250},[255,0,0,255],ctx);
+       this.drawBezierCurve({x:580,y:175},{x:520,y:150},{x:515,y:200},{x:520,y:250},[255,0,0,255],ctx);
     }
 
 
